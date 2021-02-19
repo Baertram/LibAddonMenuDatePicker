@@ -58,12 +58,12 @@ local noDropDownCallback = false
 local EVENT_HANDLER_NAMESPACE = "LAM2_Datepicker_Event"
 
 --Constants visuals
-local DEFAULT_DATEPICKER_WIDTH                      = 310
+local DEFAULT_DATEPICKER_WIDTH                      = 330
 local DEFAULT_DATEPICKER_HEIGHT                     = 250
 local DEFAULT_DATEPICKER_HEADLINE_LABEL_OFFSETX     = 0
 local DEFAULT_DATEPICKER_HEADLINE_LABEL_OFFSETY     = 35
 local DEFAULT_DATEPICKER_HEADLINE_LABEL_HEIGHT      = 20
-local DEFAULT_DATEPICKER_HEADLINE_LABEL_WIDTH       = 35
+local DEFAULT_DATEPICKER_HEADLINE_LABEL_WIDTH       = 38
 local DEFAULT_DATEPICKER_LABEL_SPACE_BETWEEN        = 10
 local DEFAULT_DATEPICKER_DAY_LABEL_HEIGHT           = 20
 local DEFAULT_DATEPICKER_DAY_LABEL_WIDTH            = 35
@@ -166,7 +166,7 @@ end
 local function getDateFormat(lang)
     local dateFormats = {
         --American format
-        ["us"] = "%s/%s/%s",
+        ["en"] = "%s/%s/%s",
         --German
         ["de"] = "%s.%s.%s",
         --French
@@ -376,6 +376,8 @@ end
 
 --Date picker update & disabled
 local function UpdateDisabled(control)
+LAM2 = {}
+LAM2._control = control
     local disable
     if type(control.data.disabled) == "function" then
         disable = control.data.disabled()
@@ -385,8 +387,14 @@ local function UpdateDisabled(control)
 
     if disable then
         control.label:SetColor(ZO_DEFAULT_DISABLED_COLOR:UnpackRGBA())
+        control.combobox:SetMouseEnabled(false)
+        control.combobox.m_comboBox.m_selectedItemText:SetColor(ZO_DEFAULT_DISABLED_COLOR:UnpackRGBA())
+        control.combobox.m_openDropdown:SetMouseEnabled(false)
     else
         control.label:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
+        control.combobox:SetMouseEnabled(true)
+        control.combobox.m_comboBox.m_selectedItemText:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
+        control.combobox.m_openDropdown:SetMouseEnabled(true)
     end
 end
 
@@ -405,7 +413,6 @@ local function UpdateValue(control, forceDefault, value)
         setComboBoxSelectedDateText(control.combobox, value)
     end
 end
-
 
 --Date picker headline and day labels
 local function OnControlMouseEnter(labelControl)
