@@ -377,7 +377,7 @@ end
 --Date picker update & disabled
 local function UpdateDisabled(control)
 LAM2 = {}
-LAM2._control = control
+LAM2.control = control
     local disable
     if type(control.data.disabled) == "function" then
         disable = control.data.disabled()
@@ -389,12 +389,12 @@ LAM2._control = control
         control.label:SetColor(ZO_DEFAULT_DISABLED_COLOR:UnpackRGBA())
         control.combobox:SetMouseEnabled(false)
         control.combobox.m_comboBox.m_selectedItemText:SetColor(ZO_DEFAULT_DISABLED_COLOR:UnpackRGBA())
-        control.combobox.m_openDropdown:SetMouseEnabled(false)
+        control.combobox.m_comboBox.m_openDropdown:SetMouseEnabled(false)
     else
         control.label:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
         control.combobox:SetMouseEnabled(true)
         control.combobox.m_comboBox.m_selectedItemText:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
-        control.combobox.m_openDropdown:SetMouseEnabled(true)
+        control.combobox.m_comboBox.m_openDropdown:SetMouseEnabled(true)
     end
 end
 
