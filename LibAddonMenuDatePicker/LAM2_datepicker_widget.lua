@@ -376,8 +376,6 @@ end
 
 --Date picker update & disabled
 local function UpdateDisabled(control)
-LAM2 = {}
-LAM2.control = control
     local disable
     if type(control.data.disabled) == "function" then
         disable = control.data.disabled()
