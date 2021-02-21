@@ -47,6 +47,18 @@ local translations = {
         NEXT_MONTH      =    "Nächster Monat",
         PREVIOUS_MONTH  =    "Vorheriger Monat",
     },
+    ["jp"] = {
+        WEEKDAYS        =   {"日", "月", "火", "水", "木", "金", "土"},
+        WEEKDAYS_LONG   =   {"日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"},
+        MONTHS          =   {"1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"},
+        MONTHS_LONG     =   {"１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"},
+        CURRENT_DAY     =   "今日", 
+        CURRENT_MONTH   =   "今月", 
+        CURRENT_YEAR    =   "今年", 
+        TODAY           =   "今日", 
+        NEXT_MONTH      =   "来月", 
+        PREVIOUS_MONTH  =   "先月", 
+    },
 }
 local lang = string.lower(GetCVar("Language.2"))
 local translation = (translations[lang] ~= nil and translations[lang]) or translations["en"]
@@ -171,6 +183,8 @@ local function getDateFormat(lang)
         ["de"] = "%s.%s.%s",
         --French
         ["fr"] = "%s/%s/%s",
+        --Japanese
+        ["jp"] = "%s年%s月%s日",    -- YYYY/MM/DD
         --Russian
         ["ru"] = "%s.%s.%s",
     }
@@ -195,6 +209,10 @@ local function buildDateFromData(data)
             first   = data.day
             second  = data.month
             third   = data.year
+        elseif lang == "jp" then
+            first   = data.year
+            second  = data.month
+            third   = data.day
         end
         dateStr = string.format(dateFormat, tostring(first),tostring(second),tostring(third))
     end
