@@ -59,6 +59,18 @@ local translations = {
         NEXT_MONTH      =   "来月", 
         PREVIOUS_MONTH  =   "先月", 
     },
+    ["fr"] = {
+        WEEKDAYS        =   {"Dim","Lun","Mar","Mer","Jeu","Ven","Sam"},
+        WEEKDAYS_LONG   =   {"Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"},
+        MONTHS          =   {"Jan", "Fév", "Mar", "Avr", "Mai", "Jui", "Jui", "Aou", "Sep", "Oct", "Nov", "Déc"},
+        MONTHS_LONG     =   {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"},
+        CURRENT_DAY     =   "Jour courrant",
+        CURRENT_MONTH   =   "Mois courrant",
+        CURRENT_YEAR    =   "Année courante",
+        TODAY           =   "Aujourd'hui",
+        NEXT_MONTH      =   "Mois prochain",
+        PREVIOUS_MONTH  =   "Mois dernier",
+    },
 }
 local lang = string.lower(GetCVar("Language.2"))
 local translation = (translations[lang] ~= nil and translations[lang]) or translations["en"]
