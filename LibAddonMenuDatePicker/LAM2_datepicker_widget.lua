@@ -14,7 +14,7 @@
     reference = "MyAddonDatepicker" -- unique global reference to control (optional)
 } ]]
 
-local widgetVersion = 4
+local widgetVersion = 5
 local LAM = LibAddonMenu2
 local em = EVENT_MANAGER
 local wm = WINDOW_MANAGER

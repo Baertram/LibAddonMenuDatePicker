@@ -1,7 +1,7 @@
-## APIVersion: 100033 100034
+## APIVersion: 100035 101031
 ## Title: LibAddonMenu-2.0 - DatePicker widget
-## Version: 4
-## AddOnVersion: 004
+## Version: 5
+## AddOnVersion: 005
 ## IsLibrary: true
 ## DependsOn: LibAddonMenu-2.0>=32
 ## Author: Baertram
