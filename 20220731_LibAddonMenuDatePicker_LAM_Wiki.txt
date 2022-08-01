@@ -1,0 +1,42 @@
+## This widget is not included into LibAddonMenu and needs to be separately download from www.esoui.com:
+https://www.esoui.com/downloads/info2932-LibAddonMenu-DatePickerwidget.html
+
+![Date picker example image](https://cdn-eso.mmoui.com/preview/pvw9901.png)
+
+Description of the bullet points 1 to 6 (see image above):
+1. Previous month
+2. Select today and close date picker
+3. Select the month from a dropdown
+4. Select the year by help of the mouse wheel, +/- buttons or enter the year into the editbox
+5. Select the current year
+6. Next month
+
+
+## Data Table
+|  property           |  type                    | default | required |                            description                                             |
+|:--------------------|:-------------------------|:--------|:---------|:-----------------------------------------------------------------------------------|
+| type                | string                   | -       | yes      | The widget type of this control ("datepicker")                                         |
+| name                | string                   | -       | yes      | My DatePicker", string id or function returning a string                              |
+| getFunc        | function                 | -       | yes      | function() return db.timestamp, -- (UNIX timestamp value of the date at 00:00:00 midnight)                    |
+| setFunc        | function                 | -       | yes      | function(timestamp) db.timestamp=timestampr
+| tooltip             | number, string, function | nil     | no       | "Date Picker's tooltip text.", or string id or function returning a string                 |
+| width               | string                   | "full"  | no       | "full" or "half" width in the panel                                                |
+| disabled            | boolean, function        | false   | no       | Determines if the date picker is disabled and its value cannot be changed               |
+| warning             | number, string, function | nil     | no       | Shows a warning icon beside the button which has a tooltip with some warning text  |
+| requiresReload | boolean                  | false   | no       | Appends a special warning text and shows a reload button if the value is changed        |
+| default        | number, function         | nil     | no       | timestamp = defaults.timestamp, timestamp of default date values (or default = defaultDate, where defaultDate is a timestamp) or a function that returns the timestamp |
+| helpUrl           | string, function      | -       | no       | A string URL "https://www.esoui.com", or a function that returns one |
+| reference      | string                   | nil     | no       | A unique global reference to the control                                                |
+
+## Examples
+```lua
+{
+  type = "datepicker",
+  name = "My DatePicker",
+  tooltip = "Date Picker's tooltip text.",
+  getFunc = function() return GetTimeStamp() end,
+  setFunc = function(timestamp) print(os.date("%c", timestamp)) end,
+  width = "half",	--or "half" (optional)
+  warning = "warning text",
+},
+```
